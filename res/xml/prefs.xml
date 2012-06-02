@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Pro Version" >
+        <CheckBoxPreference
+            android:defaultValue="1"
+            android:key="pref_key_enable_ads"
+            android:summary="Möchten sie die Werbung ausblenden, dann kaufen sie jetzt die Pro Version."
+            android:title="Werbung anzeigen" android:enabled="true"/>
+    </PreferenceCategory>
+    <!-- 
+    <PreferenceCategory android:title="Hintergrund Aktualisierungen" >
+        <EditTextPreference
+            android:defaultValue="25"
+            android:key="pref_key_video_count"
+            android:summary="Anzahl Videos die angezeigt werden"
+            android:title="Anzahl Videos" />
+        <EditTextPreference
+            android:defaultValue="1"
+            android:key="pref_key_update_interval"
+            android:summary="Zahl zwischen 1 und 60 (in Minuten)"
+            android:title="Update Interval" />
+    </PreferenceCategory> -->
+
+</PreferenceScreen>

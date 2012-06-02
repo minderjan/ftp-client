@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FTP Client</string>
+    <string name="men_add_con">Verbindung hinzufügen</string>
+    <string name="gen_save">Speichern</string>
+    <string name="gen_cancel">Abbrechen</string>
+    <string name="add_conn_conn_name">Verbindungsname*</string>
+    <string name="add_conn_username">Benutzername</string>
+    <string name="add_conn_password">Passwort</string>
+    <string name="conn_ctx_menu_title">Optionen</string>
+    <string name="conn_ctx_menu_edit">Bearbeiten</string>
+    <string name="conn_ctx_menu_remove">Löschen</string>
+    <string name="add_conn_error_msg">Error:\nBitte füllen Sie alle Pflichtfelder aus.\n(Verbundungsname, Host, Port)</string>
+    <string name="ftp_tab_local">Lokal</string>
+    <string name="ftp_tab_remote">Remote</string>
+    <string name="ftp_connecting">Verbindet...</string>
+    <string name="ftp_connected_diconnect_confirm">Wollen Sie die Verbindung wirklich trennen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="men_edt_con">Verbindung bearbeiten</string>
+    <string name="men_wlan_disable">WLAN deaktivieren</string>
+    <string name="men_wlan_enable">WLAN aktivieren</string>
+    <string name="tst_wlan_disabled">WIFI wurde deaktiviert</string>
+    <string name="tst_wlan_enabeld">WIFI wurde eingeschaltet</string>
+    <string name="men_add_folder">Ordner erstellen</string>
+
+</resources>

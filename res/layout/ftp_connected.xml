@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ln_connected"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- android:background="@drawable/background" -->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1" />
+
+    <LinearLayout
+        android:id="@+id/ln_bottombar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/grey_dark"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:id="@+id/ln_connection_info"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:visibility="gone"
+            android:layout_weight="0.1"
+            android:background="@android:color/holo_orange_light"
+            android:orientation="vertical"
+            android:paddingLeft="4dp"
+            android:paddingTop="4dp" >
+
+            <TextView
+                android:id="@+id/txt_network_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Network connection is interrupted.."
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/imb_home"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style"
+                android:onClick="imb_bb_home_click"
+                android:padding="10dp"
+                android:src="@drawable/ic_action_home" />
+            <!--
+        <ImageButton
+            android:id="@+id/imb_arrow_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:visibility="invisible"
+            android:background="@drawable/button_style"
+            android:onClick="imb_bb_back_click"
+            android:padding="10dp"
+            android:src="@drawable/ic_action_arrow_left" />
+
+      
+
+        <ImageButton
+            android:visibility="invisible"
+            android:id="@+id/imb_arrow_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:background="@drawable/button_style"
+            android:onClick="imb_bb_forward_click"
+            android:padding="10dp"
+            android:src="@drawable/ic_action_arrow_right" />
+            -->
+
+            <HorizontalScrollView
+                android:id="@+id/hsv_bottombar_button_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:id="@+id/ln_bottombar_scroll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/adplaceholder_connected"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
