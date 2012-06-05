@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <!--  No Files aviable -->
     <LinearLayout
         android:id="@+id/ln_remote_error"
         android:layout_width="match_parent"
@@ -20,11 +21,28 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/background_dark" />
     </LinearLayout>
+    
+        <!--  Loading -->
+    <LinearLayout
+        android:id="@+id/ln_remote_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ln_remote_lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         android:orientation="vertical" >
 
         <ListView

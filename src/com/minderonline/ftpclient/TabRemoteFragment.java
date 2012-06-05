@@ -2,6 +2,7 @@ package com.minderonline.ftpclient;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 import com.minderonline.ftpclient.ftp.ftp_functions;
 import com.minderonline.ftpclient.general.FileManagerListAdapter;
@@ -221,6 +222,15 @@ public class TabRemoteFragment extends FragmentListRemote {
 			pb.setAnimation(anim);
 			pb.setVisibility(pb.VISIBLE);
 
+			// Show Loading Screen
+			LinearLayout ln_loading = (LinearLayout) getActivity()
+					.findViewById(R.id.ln_remote_loading);
+			LinearLayout ln_list = (LinearLayout) getActivity().findViewById(
+					R.id.ln_remote_lv);
+
+			ln_list.setVisibility(ln_list.GONE);
+			ln_loading.setVisibility(ln_loading.VISIBLE);
+
 			Thread trd = new Thread() {
 				@Override
 				public void run() {
@@ -268,8 +278,8 @@ public class TabRemoteFragment extends FragmentListRemote {
 
 			Intent i = new Intent();
 			i.setClass(l.getContext(), ProgressActivity.class);
-//			i.putExtra("time", "");
-//			i.putExtra("counter", "");
+			// i.putExtra("time", "");
+			// i.putExtra("counter", "");
 			startActivity(i);
 
 		}
@@ -280,32 +290,36 @@ public class TabRemoteFragment extends FragmentListRemote {
 
 		@Override
 		protected Boolean doInBackground(Integer... params) {
+			try {
+				Log.d("ftp", "before directory change");
+				if (ftp_functions
+						.ftpChangeDirectory(ftpConnectedActivity.RemoteFileList
+								.get(params[0]).getFileName())) {
 
-			Log.d("ftp", "before directory change");
-			if (ftp_functions
-					.ftpChangeDirectory(ftpConnectedActivity.RemoteFileList
-							.get(params[0]).getFileName())) {
+					Log.d("ftp", "after directory change");
 
-				Log.d("ftp", "after directory change");
+					Log.d("ftp", "before create list");
+					Boolean status = CreateRemoteFileList();
 
-				Log.d("ftp", "before create list");
-				Boolean status = CreateRemoteFileList();
+					Log.d("ftp", "after create list");
 
-				Log.d("ftp", "after create list");
+					// Add the New Path to the History and change the
+					// Current Index
+					ftpConnectedActivity.HistoryListRemote
+							.add(ftpConnectedActivity.RemoteFileList.get(
+									params[0]).getFilePath());
+					ftpConnectedActivity.CurrentHistoryPositionRemote = ftpConnectedActivity.HistoryListRemote
+							.size();
 
-				// Add the New Path to the History and change the
-				// Current Index
-				ftpConnectedActivity.HistoryListRemote
-						.add(ftpConnectedActivity.RemoteFileList.get(params[0])
-								.getFilePath());
-				ftpConnectedActivity.CurrentHistoryPositionRemote = ftpConnectedActivity.HistoryListRemote
-						.size();
+					if (status)
 
-				if (status)
-
-					return true;
-				else
-					return false;
+						return true;
+					else
+						return false;
+				}
+			} catch (Exception e) {
+				Log.e("FTP_ERROR", e.getMessage());
+				return false;
 			}
 			return false;
 
@@ -325,16 +339,25 @@ public class TabRemoteFragment extends FragmentListRemote {
 						getActivity().getApplicationContext(), R.anim.fadein);
 				pb.setAnimation(anim);
 				pb.setVisibility(pb.INVISIBLE);
-			}
-			else
-			{
-				
+
+				// Hide Loading Screen
+				LinearLayout ln_loading = (LinearLayout) getActivity()
+						.findViewById(R.id.ln_remote_loading);
+				LinearLayout ln_list = (LinearLayout) getActivity()
+						.findViewById(R.id.ln_remote_lv);
+
+				ln_list.setVisibility(ln_list.VISIBLE);
+				ln_loading.setVisibility(ln_loading.GONE);
+			} else {
+
 				// Hide Listview
-				LinearLayout ln = (LinearLayout)getActivity().findViewById(R.id.ln_remote_lv);
+				LinearLayout ln = (LinearLayout) getActivity().findViewById(
+						R.id.ln_remote_lv);
 				ln.setVisibility(ln.GONE);
-				LinearLayout tv = (LinearLayout)getActivity().findViewById(R.id.ln_remote_error);
+				LinearLayout tv = (LinearLayout) getActivity().findViewById(
+						R.id.ln_remote_error);
 				tv.setVisibility(tv.VISIBLE);
-				
+
 				// Hide Loading
 				ProgressBar pb = (ProgressBar) ftpConnectedActivity.menuItemProgress
 						.getActionView().findViewById(R.id.menuItemRefreshBar);

@@ -702,6 +702,13 @@ public class ftpConnectedActivity extends FragmentActivity {
 			}
 		} else {
 
+			// Show Loading Screen
+			LinearLayout ln_loading = (LinearLayout) findViewById(R.id.ln_remote_loading);
+			LinearLayout ln_list = (LinearLayout) findViewById(R.id.ln_remote_lv);
+
+			ln_list.setVisibility(ln_list.GONE);
+			ln_loading.setVisibility(ln_loading.VISIBLE);
+
 			FtpGoUp ftgu = new FtpGoUp();
 			ftgu.execute(1);
 
@@ -754,6 +761,13 @@ public class ftpConnectedActivity extends FragmentActivity {
 						getApplicationContext(), R.anim.fadein);
 				pb.setAnimation(anim);
 				pb.setVisibility(pb.INVISIBLE);
+
+				// Hide Loading Screen
+				LinearLayout ln_loading = (LinearLayout) findViewById(R.id.ln_remote_loading);
+				LinearLayout ln_list = (LinearLayout) findViewById(R.id.ln_remote_lv);
+
+				ln_list.setVisibility(ln_list.VISIBLE);
+				ln_loading.setVisibility(ln_loading.GONE);
 
 			} else {
 
